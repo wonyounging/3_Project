@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>영화 챗봇</title>
+    <script src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(function(){
+            $("#button1").click(function(){
+                const q=$("#question").val();
+                console.log('q:',q);
+                $.ajax({
+                    url: 'query',
+                    data: 'question='+q,
+                    success:function(txt){
+                        $(".slideshow-container").hide(); // 확인 버튼 클릭 시 슬라이드 숨기기
+                        console.log(txt);
+                        $("#div1").html(txt);
+                        $("#question").val(""); // 입력 필드 내용 초기화
+                    }
+                });
+            });
+            $("#question").keypress(function(event){
+                if(event.keyCode === 13){
+                    $("#button1").click(); // Enter 키 눌렀을 때 확인 버튼 클릭 이벤트 실행
+                }
+            });
+
+            var slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {
+                    slideIndex = 1;
+                }
+                slides[slideIndex - 1].style.display = "block";
+
+                setTimeout(showSlides, 2000); // 2초마다 이미지가 체인지됩니다
+            }
+
+        });
+
+        function delete_chat(){
+            if(confirm('모든 내용을 삭제하시겠습니까?')){
+                location.href='delete_chat';
+            }
+        }
+    </script>
+    <style>
+      body{background-color: #161616;}
+      h2{text-align: center;}
+      table{margin: auto;
+            width: 100%;
+            padding : 10px;
+            font-size:13px;
+            border-spacing: 10px;}
+      td {
+            border-top-left-radius: 15px;
+        	border-top-right-radius: 15px;
+        	border-bottom-left-radius: 15px;
+        	border-bottom-right-radius: 15px;}
+      #question {
+            width: 70%;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: none;
+        }
+      .btn {
+            width: 10%;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: none;
+            background-color: #e9903c;
+            color: white;
+        }
+      a {color: #e9903c;}
+      .chat-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            min-height: 75vh;
+        }
+      .chat-box {
+            width: 800px;
+            background-color: #DFE0DF;
+            border-radius: 5px;
+            text-align: center;
+            padding: 10px;
+            margin-top: auto;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slide.css' %}">
+</head>
+<body>
+<a href="logout">로그아웃</a>
+<a href="/">Home</a>
+<h2 style="color: #DFE0DF">챗봇 서비스</h2>
+<div class="chat-container">
+    <span class="slideshow-container">
+         <div class="Slidesbackground">
+             <div class="mySlides fade">
+            <img src="https://image.tmdb.org/t/p/original/c0ukVbk8pGVa7dTY0C40y5mNp4s.jpg" class="slideshow-image">
+            </div>
+            <div class="mySlides fade">
+                <img src="https://image.tmdb.org/t/p/original/5tm4Rv24NYdGpuWzA6aF5h1qm0E.jpg" class="slideshow-image">
+            </div>
+            <div class="mySlides fade">
+                <img src="https://image.tmdb.org/t/p/original/2D35pMVdcDahHWr3mN0Hl2jdjhU.jpg" class="slideshow-image">
+            </div>
+            <div class="mySlides fade">
+                <img src="https://image.tmdb.org/t/p/original/zDNAeWU0PxKolEX1D8Vn1qWhGjH.jpg" class="slideshow-image">
+            </div>
+            <div class="mySlides fade">
+                <img src="https://image.tmdb.org/t/p/original/idCfJB8mTZfy49Yb6lX3FfEzvV7.jpg" class="slideshow-image">
+            </div>
+            <div class="mySlides fade">
+                <img src="https://image.tmdb.org/t/p/original/jbHNkNydiZstlqhhBSvG19lm4NL.jpg" class="slideshow-image">
+            </div>
+            <div class="mySlides fade">
+            <img src="https://image.tmdb.org/t/p/original/A8TIGujNG7vDbpFXP1HGe8SNf1Z.jpg" class="slideshow-image">
+            </div>
+            <div class="mySlides fade">
+                <img src="https://image.tmdb.org/t/p/original/AswplPGdIc5Uv8OGklFSw9TRtgd.jpg" class="slideshow-image">
+            </div>
+            <div class="mySlides fade">
+                <img src="https://image.tmdb.org/t/p/original/b8oI2Gx12Wf51HqkRnKrCuzP5g7.jpg" class="slideshow-image">
+            </div>
+            <div class="mySlides fade">
+                <img src="https://image.tmdb.org/t/p/original/zygmx5abXeDpr3fWYX4jlXFZ1wh.jpg" class="slideshow-image">
+            </div>
+            <div class="mySlides fade">
+                <img src="https://image.tmdb.org/t/p/original/ujIHEzt2EEboVzjQoWZBMYdAt1v.jpg" class="slideshow-image">
+            </div>
+            <div class="mySlides fade">
+                <img src="https://image.tmdb.org/t/p/original/6Pg5AwsJUqeGanGOWcaljQXGe5g.jpg" class="slideshow-image">
+            </div>
+        </div>
+     </span>
+    <div class="chat-box">
+        <span id="div1"></span>
+        <input type="text" id="question" placeholder="영화 추천, 정보, 후기, 예약 서비스 질문 입력">
+        <input type="button" class="btn" id="button1" value="확인">
+        <input type="button" class="btn" onclick="delete_chat()" value="삭제">
+    </div>
+</div>
+</body>
+</html>

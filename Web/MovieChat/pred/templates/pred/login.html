@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <style>
+      body{background-color: #161616;}
+      h2{text-align: center;
+         color: #DFE0DF;}
+      div{margin: auto;
+          width: 350px;
+          background-color: #DFE0DF;
+          border-radius: 5px;
+          text-align: center;
+          padding: 20px;}
+      table{margin: auto;
+            width: 100%;
+            padding: 10px;
+            border-spacing: 10px;
+            }
+      input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: none;
+        }
+      #btn {
+            background-color: #e9903c;
+            margin-bottom: 10px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h2>로그인</h2>
+<div>
+<form method="post" action="login">
+{% csrf_token %}
+    <table>
+      <tr>
+        <td>아이디</td>
+        <td><input name="userid"></td>
+      </tr>
+      <tr>
+        <td>비밀번호</td>
+        <td><input type="password" name="passwd"></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <input type="submit" id="btn" value="로그인">
+          <input type="button" id="btn" value="회원가입" onclick="location.href='join'">
+        </td>
+      </tr>
+    </table>
+  <span style="color:red">{{msg}}</span>
+</form>
+</div>
+</body>
+</html>

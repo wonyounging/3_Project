@@ -1,0 +1,24 @@
+<div id="scrollContainer" style="overflow-x: hidden; overflow-y: scroll; width: 98%; height: 650px; display: inline-block;">
+  <table border="0" style="margin-top: 500px;">
+    {% for item in items reversed %}
+    <tr>
+      {% if item.answer == '' %}
+      <td width="50%" bgcolor="#DFE0DF"><br><br><br></td>
+      {% else %}
+      <td width="50%" bgcolor="#e9903c">{{ item.answer|safe }}</td>
+      {% endif %}
+
+      {% if item.query == '' %}
+      <td width="50%" bgcolor="#DFE0DF"><br><br><br></td>
+      {% else %}
+      <td width="50%" bgcolor="white" style="padding: 10px;">{{ item.query }}</td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+<script>
+  var scrollContainer = document.getElementById("scrollContainer");
+  scrollContainer.scrollTop = scrollContainer.scrollHeight;
+</script>

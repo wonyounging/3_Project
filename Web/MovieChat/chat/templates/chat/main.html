@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>메인화면</title>
+    <style>
+      body{background-color: #161616;}
+      h2{text-align: center;
+         color: #DFE0DF;}
+      div{margin: auto;
+          width: 350px;
+          background-color: #DFE0DF;
+          border-radius: 5px;
+          text-align: center;
+          padding: 20px;}
+      input {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: none;
+            font-size: 15px;
+        }
+      #btn {
+            background-color: #e9903c;
+            margin-bottom: 10px;
+            color: white;
+        }
+      a {color: #161616;}
+    </style>
+</head>
+<body>
+  <h2>{{request.session.name}}님 환영합니다 :)</h2>
+  <div>
+      <input type="button" id="btn" value="영화 챗봇 시작하기🎬" onclick="location.href='order'">
+      <a href="logout" >로그아웃</a>
+      <a href="/">Home</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<table border="0" >
+    <tr>
+        <td colspan="2"> <p id="main">업로드 이미지</p></td>
+    </tr>
+    <tr>
+        <td colspan="2" rowspan="3">
+            <img src="data:image/png;base64,{{ image_data }}" alt="Uploaded Image" class="medium-image">
+        </td>
+        <td colspan="5">
+            <p id="main" style= "color: #e9903c;" >{{pred}}<br>장르 예측 결과 : {{genre}}</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="5">
+            <p>주요 색</p>
+        </td>
+    </tr>
+    <tr>
+        {% for color in colors %}
+            <td>
+                <span style="background-color: {{ color }}; display: inline-block; width: 85px; height: 85px;"></span>
+            </td>
+        {% endfor %}
+    </tr>
+</table>
+
+<table border="0">
+    <tr>
+        <td colspan="3"> <p id="main">유사한 영화 포스터</p></td>
+    </tr>
+    <tr>
+        <td>
+            <img src="data:image/png;base64,{{ emb_img1 }}" alt="Embedding Image1" class="small-image">
+        </td>
+        <td>
+            <img src="data:image/png;base64,{{ emb_img2 }}" alt="Embedding Image2" class="small-image">
+        </td>
+        <td>
+            <img src="data:image/png;base64,{{ emb_img3 }}" alt="Embedding Image3" class="small-image">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            {{ emb_img1_genre }}
+        </td>
+        <td>
+            <p>{{ emb_img2_genre }}</p>
+        </td>
+        <td>
+            <p>{{ emb_img3_genre }}</p>
+        </td>
+    </tr>
+</table>
+
+<table border="0">
+    <tr>
+        <td> <p id="main">객체인식</p></td>
+        <td> <p id="main">OCR인식</p></td>
+    </tr>
+    <tr>
+        <td>
+            <img src="data:image/png;base64,{{ obj_img }}" alt="Object Image" class="big-image">
+        </td>
+        <td>
+            <img src="data:image/png;base64,{{ ocr_img }}" alt="OCR Image" class="big-image">
+        </td>
+    </tr>
+</table>
+
+<table border="0">
+    <tr>
+        <td rowspan="2" style="width: 100px;">객체 인식</td>
+        {% for col, lst in obj_lst_col %}
+            <td style="width: 60px;">{{ col }}</td>
+        {% endfor %}
+    </tr>
+    <tr>
+        {% for col, lst in obj_lst_col %}
+            <td style="width: 60px;">{{ lst }}</td>
+        {% endfor %}
+    </tr>
+</table>
+
+<table border="0">
+    <tr>
+        <td rowspan="2" style="width: 100px;">OCR 인식</td>
+        <td style="width: 60px;">액션</td>
+        <td style="width: 60px;">애니메이션</td>
+        <td style="width: 60px;">코미디</td>
+        <td style="width: 60px;">드라마</td>
+        <td style="width: 60px;">공포(호러)</td>
+    </tr>
+    <tr>
+        {% for item in ocr_lst %}
+            <td>{{ item }}</td>
+        {% endfor %}
+    </tr>
+</table>
